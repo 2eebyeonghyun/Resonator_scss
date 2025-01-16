@@ -1,0 +1,736 @@
+@charset "utf-8";
+@import url(./common.css);
+
+/* 본문 영역 시작 */
+.main {
+
+	.section {
+		width: 100%;
+	}
+
+	/* 팟캐스트페이지  */
+	&.podcast--page {
+		.section {
+
+			&.section01 {
+				padding: 14rem 0;
+
+				.gird__list {
+					/* 사용자 편의를 위해 card를 두개씩 배치 */
+					grid-template-columns: repeat(2, 1fr);
+					justify-content: center;
+					align-items: center;
+
+					.card__informationBox {
+						display: flex;
+						flex-direction: column;
+						box-shadow: var(--boxShadow);
+						border-radius: 1.5rem;
+						overflow: hidden;
+						/* card에 이미지 꽉 채워서 보여주기 위해 padding을 0으로 줌 */
+						padding: 0;
+
+						.card__content {
+							display: flex;
+							flex-direction: column;
+							padding: 3rem 2.5rem;
+
+							.informationBox__titleBox {
+
+								.informationBox__title {
+									font-size: 4rem;
+								}
+							}
+
+							.content__episode {
+								display: flex;
+								flex-direction: column;
+								gap: 2.5rem;
+								/* 20241218 마진바텀 추가했습니다. */
+								margin-bottom: 3rem;
+
+								.content__info {
+									display: flex;
+									flex-direction: column;
+									gap: 1.5rem;
+
+									.content__num {
+										color: var(--fontColor2);
+										font-size: 1.5rem;
+									}
+
+									/* btn-play는 동일한 구조로 사용하는게 좋을 거 같아서 삭제 하였고 detail 클래스에 넓이값을 추가햇습니다. */
+									.info__playnsubtitle {
+										display: flex;
+										align-items: center;
+										gap: 2rem;
+
+										.content__detail {
+											width: calc(100% - 9rem);
+											display: inline-block;
+											text-decoration: none;
+											color: var(--fontBlack);
+											font-size: 2rem;
+											font-weight: bold;
+											overflow: hidden;
+											display: -webkit-box;
+											-webkit-line-clamp: 2;
+											-webkit-box-orient: vertical;
+											line-height: 1.5;
+											position: relative;
+										}
+									}
+								}
+							}
+
+							.card__footer {
+								display: flex;
+								justify-content: flex-end;
+							}
+
+						}
+
+						&:hover .card__imgBox img {
+							transform: scale(1.1);
+							opacity: 0.7;
+							transition: transform 0.7s, opacity 0.7s;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* 팟캐스트inner페이지 */
+	&.podcast--inner {
+
+		.section {
+
+			&.section01 {
+				position: relative;
+				height: 90rem;
+				background: url(../img/podcast_inner_bg.jpg) no-repeat center;
+				background-size: cover;
+		
+				.inner {
+				  height: 100%;
+				  display: flex;
+				  justify-content: center;
+				  align-items: center;
+				  text-align: center;
+				}
+		
+				.section01__textBanner {
+
+					.textBanner__information {
+					  	font-size: 6rem;
+					  	color: var(--fontWhite);
+					  	font-weight: 700;
+					}
+		
+					.information__btnWrap {
+					  	display: flex;
+					  	justify-content: center;
+					  	gap: 3.5rem;
+					  	margin-top: 5rem;
+					}
+				}
+			}
+
+			&.section03 {
+                padding: 14rem 0;
+
+                /* 가로 배치 */
+                .podcast__about {
+                    gap: 15rem;
+                    display: flex;
+                    align-items: center;
+                }
+
+				.podcast__information {
+					width: calc(100% - 30rem);
+
+					.text_info {
+						display: flex;
+						flex-direction: column;
+						gap: 2rem;
+					}
+
+					.information__text {
+						font-size: 2.4rem;
+						font-weight: 500;
+						line-height: 3rem;
+					}
+				}
+
+				/* 버튼 박스 오른쪽에서 시작 */
+				.about__btnBox {
+					width: 30rem;
+					align-items: flex-end;
+
+					.textarea__listenOn {
+						font-size: 2.5rem;
+						margin-bottom: 3rem;
+					}
+
+					.btn-episode {
+						font-size: 2rem;
+						line-height: 4rem;
+					}
+				}
+            }
+
+			&.section04 {
+                overflow: hidden;
+
+				/* 부모요소에 플렉스 준 다음 수평정렬을 맞춘다. */
+				.contents {
+					display: flex;
+					flex-direction: row;
+					/* wrap을 사용한 이유 : 자식요소가 전체넓이 100%을 초과하게 되면 자식 영역이 분리가 된다 */
+					flex-wrap: wrap;
+				}
+
+				/* 이미지 박스 */
+				.contents__imgBox {
+					/* calc을 사용한 이유 전체넓이 100%에서 텍스트박스의 넓이 50%을 뺀다음 이미지박스에 준 마진 값을 뺀다. */
+					width: calc(100% - 50% - 25rem);
+					margin-right: 25rem;
+					overflow: hidden;
+					border-radius: 1rem;
+				}
+
+				/* 텍스트박스 */
+				.contents__textBox {
+					width: 50%;
+
+					.textBox__title {
+						color: var(--fontBlack);
+						font-size: 3.5rem;
+						font-weight: 700;
+						line-height: 4rem;
+						margin-bottom: 5rem;
+					}
+
+					.textBox__list {
+
+						.list__item {
+							display: flex;
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 3rem;
+							margin-bottom: 3rem;
+
+							&:last-of-type {
+								margin-bottom: 0;
+							}
+						}
+					}
+				}
+            }
+
+			&.section05 {
+				padding: 14rem 0 0;
+
+				.inner {
+
+					.box__episodecontent {
+						width: 100%;
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						align-items: center;
+
+						.episodecontent__content {
+							width: 50%;
+
+							.section__title {
+								margin-bottom: 2rem;
+							}
+
+							.content__information {
+								height: 30rem;
+								overflow-y: scroll;
+								padding: 0.5rem;
+								background-color: var(--bg2);
+								border-radius: 1rem;
+								box-shadow: var(--boxShadow);
+
+								.information__row {
+									margin-bottom: 2.5rem;
+
+									&:last-child {
+										margin-bottom: 0;
+									}
+
+									.row__name {
+										font-size: 2.5rem;
+										font-weight: 700;
+										margin-bottom: 1.5rem;
+										display: block;
+									}
+
+									.row__description {
+										font-size: 1.7rem;
+										line-height: 1.5;
+									}
+
+									
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.section06 {
+				padding: 10rem 0;
+
+				.inner {
+					.contents {
+						.section__headingBox {
+							text-align: left;
+						}
+
+						.gird__list {
+							.list__card {
+								.card__informationBox {
+									.informationBox__title {
+										&::after {
+											display: none;
+										}
+									}
+
+									.informationBox__job {
+										margin-bottom: 1rem;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.section07 {
+				background-color: var(--bg2);
+				position: relative;
+				padding: 7rem 0;
+
+				.inner {
+
+					.contents {
+						margin-bottom: 3rem;
+
+						.section__headingBox {
+							text-align: left;
+							display: flex;
+							flex-direction: row;
+							justify-content: space-between;
+						}
+
+						.gird__list {
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+
+							.card__imgBox {
+								width: 70%;
+								border-radius: 5rem;
+							}
+
+							.card__informationBox {
+								width: 70%;
+
+								.informationBox__title {
+									font-size: 3rem;
+								}
+
+								.informationBox__job {
+									font-size: 2rem;
+									line-height: 3rem;
+									margin-top: 2rem;
+								}
+
+								.episode__categoryBox {
+									margin-top: 1rem;
+								}
+							}
+
+						}
+
+					}
+
+					.contents__btn {
+						display: flex;
+						gap: 5rem;
+						justify-content: flex-end;
+
+						.btn-left {
+							background: url(../img/ico_left.svg) no-repeat;
+							width: 1.5rem;
+							height: 3rem;
+						}
+
+						.btn-right {
+							background: url(../img/ico_right.svg) no-repeat;
+							width: 1.5rem;
+							height: 3rem;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media (width < 1300px) {
+
+		/* 팟캐스트 페이지 */
+		&.podcast--page {
+
+			.section {
+
+				&.section01 {
+
+					.gird__list {
+
+						.card__informationBox {
+
+							.card__content {
+
+								.informationBox__titleBox {
+
+									.informationBox__title {
+										font-size: 3rem;
+									}
+								}
+
+								.content__episode {
+
+									.content__info {
+
+										.content__num {
+											font-size: 1.3rem;
+										}
+
+										.info__playnsubtitle {
+											.content__detail {
+												width: calc(100% - 4.5rem);
+												display: inline-block;
+												font-size: 1.7rem;
+												overflow: hidden;
+												display: -webkit-box;
+												-webkit-line-clamp: 1;
+												-webkit-box-orient: vertical;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/* 팟캐스트inner 페이지 */
+		&.podcast--inner {
+
+			.section {
+
+				&.section03 {
+
+					.podcast__about {
+						flex-direction: column;
+						gap: 8rem;
+					}
+				
+					.podcast__information {
+						width: 100%;
+					}
+				
+					.about__btnBox {
+						width: 100%;
+						align-items: center;
+					}
+				}
+
+				&.section04 {
+
+					.contents__imgBox {
+						width: calc(100% - 50% - 10rem);
+						margin-right: 10rem;
+					}
+				}
+
+				&.section05 {
+					.inner {
+						.box__episodecontent {
+							gap: 2rem;
+							align-items: flex-start;
+
+							.episodecontent__content {
+								width: 60%;
+
+								.content__information {
+									.information__row {
+										.row__name {
+											font-size: 2rem;
+										}
+
+										.row__description {
+											font-size: 1.5rem;
+											line-height: 2.3rem;
+										}
+									}
+								}
+							}
+
+							.contents__pictureBox {
+								width: 40%;
+							}
+						}
+					}
+				}
+
+				&.section07 {
+					.inner {
+						.contents {
+							.gird__list {
+								.card__imgBox {
+									width: 70%;
+									border-radius: 5rem;
+								}
+
+								.card__informationBox {
+									display: flex;
+									flex-direction: column;
+
+									.informationBox__job {
+										overflow: hidden;
+										display: -webkit-box;
+										-webkit-line-clamp: 2;
+										-webkit-box-orient: vertical;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media (width < 768px) {
+
+		/* 팟캐스트 페이지 */
+		&.podcast--page {
+
+			.section {
+
+				&.section01 {
+					padding: 7rem 0;
+
+					.gird__list {
+						width: 100%;
+						grid-template-columns: repeat(1, 1fr);
+
+						.card__informationBox {
+							.card__imgBox {
+								height: 30rem;
+							}
+
+							.card__content {
+								padding: 2rem;
+
+								.content__title {
+									display: inline-block;
+									font-size: 3.5rem;
+								}
+
+								.content__info {
+
+									.content__num {
+										font-size: 1.5rem;
+									}
+
+									.content__detail {
+										display: inline-block;
+										font-size: 1.7rem;
+										overflow: hidden;
+										display: -webkit-box;
+										-webkit-line-clamp: 1;
+										-webkit-box-orient: vertical;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/* 팟캐스트inner 페이지 */
+		&.podcast--inner {
+			.section {
+
+				&.section01 {
+					height: 70rem;
+			
+					.section01__textBanner {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+
+						.textBanner__information {
+							font-size: 3rem;
+					  	}
+		  
+			
+						.information__btnWrap {
+							gap: 0.5rem;
+							flex-direction: column;
+						}
+					}
+				}
+
+				&.section03 {
+					padding: 7rem 0;
+
+					.podcast__about {
+						gap: 5rem;
+					}
+
+					.podcast__information {
+	
+						.information__text {
+							font-size: 1.6rem;
+							line-height: 1.5;
+						}
+					}
+				}
+
+				&.section04 {
+
+					.contents {
+						max-width: 95%;
+						margin: 0 auto;
+						gap: 2rem;
+					}
+
+					.contents__imgBox {
+						width: 100%;
+						margin: 0;
+					}
+	
+					.contents__textBox {
+						width: 100%;
+	
+						.textBox__title {
+                            font-size: 2.3rem;
+                            line-height: 1.5;
+                            margin-bottom: 2.5rem;
+						}
+	
+						.textBox__list {
+	
+							.list__item {
+								display: flex;
+								flex-direction: row;
+								flex-wrap: wrap;
+								align-items: center;
+								gap: 3rem;
+								margin-bottom: 3rem;
+	
+								&:last-of-type {
+									margin-bottom: 0;
+								}
+							}
+						}
+					}
+				}
+
+				&.section05 {
+					padding: 4rem 0;
+
+					.inner {
+						.box__episodecontent {
+							flex-direction: column-reverse;
+
+							.episodecontent__content {
+								width: 100%;
+
+								.content__information {
+									height: auto;
+									overflow-y: hidden;
+
+									.information__row {
+
+
+										.row__name {
+											font-size: 2rem;
+										}
+
+										.row__description {
+											font-size: 1.5rem;
+											line-height: 2.5rem;
+										}
+									}
+								}
+							}
+
+							.contents__pictureBox {
+								width: 100%;
+								height: 30rem;
+							}
+						}
+					}
+				}
+
+				&.section07 {
+					padding: 4rem 0;
+
+					.inner {
+
+						.contents {
+
+							.gird__list {
+								display: flex;
+								flex-direction: column;
+								gap: 0;
+								align-items: flex-start;
+
+								.card__imgBox {
+									width: 100%;
+								}
+
+								.card__informationBox {
+									width: 100%;
+									
+									.informationBox__title {
+										font-size: 2rem;
+									}
+
+									.informationBox__job {
+										font-size: 1.5rem;
+										line-height: 2.5rem;
+										margin-top: 0.5rem;
+									}
+
+									.episode__categoryBox {
+										margin-top: 0.5rem;
+									}
+								}
+							}
+						}
+
+						.contents__btn {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/* 본문 영역 끝 */

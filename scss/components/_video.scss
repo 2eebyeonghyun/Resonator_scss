@@ -1,0 +1,41 @@
+@use '../abstracts/' as *;
+
+.videoBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &:hover {
+
+        .videoBox__btn {
+
+            &.pause {
+                display: block;
+            }
+        }
+    }
+}
+
+.videoBox__video {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.videoBox__btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 9rem;
+    aspect-ratio: 1;
+    background-color: $bgWhite;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.pause {
+        display: none;
+        transition: all .3s ease-in-out;
+    }
+}

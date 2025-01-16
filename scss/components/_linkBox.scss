@@ -1,0 +1,43 @@
+@use '../abstracts/' as *;
+
+.list__linkBox {
+
+    &.sns {
+
+        .linkBox__link {
+            display: inline-block;
+            margin-right: 2rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.linkBox__link {
+    color: #ccc;
+    font-family: $subFont;
+    font-size: 1.7rem;
+    font-weight: 400;
+    line-height: 2.703rem;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: block;
+
+    >i {
+        color: $fontColor4;
+        font-size: 2.1rem;
+        font-weight: 400;
+        line-height: 2.1rem;
+        transition: color 0.3s;
+    }
+
+    &:hover {
+        color: $fontWhite;
+
+        >i {
+            color: $fontWhite;
+        }
+    }
+}

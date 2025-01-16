@@ -1,0 +1,51 @@
+@use '../abstracts/' as *;
+
+@keyframes timeline_ball {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes timeline_line {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes Xmove {
+    0% {
+        transform: scaleX(1);
+        /* 원사이즈 */
+        transform-origin: 100% 0;
+        /* 우측기준점 */
+    }
+
+    50% {
+        transform: scaleX(0);
+        /* 축소 사이즈 */
+        transform-origin: 100% 0;
+        /* 우측기준점 */
+    }
+
+    51% {
+        transform: scaleX(0);
+        /* 축소 사이즈 */
+        transform-origin: 0 0;
+        /* 좌측기준점 */
+    }
+
+    100% {
+        transform: scaleX(1);
+        /* 원사이즈 */
+        transform-origin: 0 0;
+        /* 좌측기준점 */
+    }
+}

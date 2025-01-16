@@ -1,0 +1,128 @@
+@use '../abstracts/' as *;
+
+.sideMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    /* z-index값을 header보다 위로 주어 사이드메뉴가 위에 있게 배치한다. */
+    z-index: 1001;
+    height: 100vh;
+    background-color: $bgWhite;
+    box-shadow: $boxShadow;
+    padding: 0 4.5rem;
+    /* active가 되기전에는 넓이값이 0이고 숨김처리를 한다. */
+    width: 0;
+    display: none;
+
+    &.--active {
+        /* actvie가 되면 넓이는 45rem으로 변경되고 display grid가 된다. */
+        width: 45rem;
+        display: grid;
+        gap: 5rem;
+        grid-template-rows: 11.5rem min-content min-content;
+    }
+
+    .btn-wrap {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .btn-menu {
+
+            .btn-menu__line {
+
+                &.__line2 {
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .gnb {
+        flex-direction: column;
+        align-items: center;
+        gap: 6rem;
+        margin-bottom: 5rem;
+
+        >li {
+
+            &:hover {
+
+                >a {
+                    color: $fontBlack;
+                }
+            }
+
+            &.--active {
+
+                >a {
+                    border-bottom: 0;
+                }
+            }
+
+            >a {
+                font-size: 3rem;
+                font-weight: 800;
+                color: $fontColor2;
+                transition: all .3s ease-in-out;
+            }
+        }
+    }
+
+    .company__information {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+
+        .row__title {
+            font-size: 2.3rem;
+            line-height: 1.5;
+            font-weight: 700;
+            color: $fontBlack;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .linkBox__link {
+            line-height: 1.5;
+            font-weight: 400;
+
+            :is(&:hover, &:hover > i) {
+                color: $fontBlack;
+            }
+        }
+    }
+
+    @media (width < 768px) {
+        padding: 0 2rem;
+
+        &.--active {
+            width: 100%;
+            gap: 3.5rem;
+            grid-template-rows: 8rem min-content min-content;
+        }
+
+        .gnb {
+            gap: 3.5rem;
+
+            >li {
+
+                >a {
+                    font-size: 2.3rem;
+                }
+            }
+        }
+
+        .company__information {
+            gap: 1.7rem;
+
+            .row__title {
+                font-size: 1.6rem;
+            }
+
+            .linkBox__link {
+                font-size: 1.4rem;
+            }
+        }
+    }
+}

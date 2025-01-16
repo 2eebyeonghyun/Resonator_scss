@@ -1,0 +1,27 @@
+@use '../abstracts/' as *;
+
+.section__headingBox {
+    text-align: center;
+    margin-bottom: 6.5rem;
+
+    &.sub__headingBox {
+        text-align: left;
+    }
+
+    @media (width < 768px) {
+        flex-wrap: wrap;
+        text-align: left;
+        margin-bottom: 4rem;
+    }
+}
+
+.informationBox__titleBox {
+    margin-bottom: 2.71rem;
+    display: block;
+}
+
+.textBox__btnWrap {
+    display: flex;
+    gap: 2.3rem;
+    align-items: center;
+}

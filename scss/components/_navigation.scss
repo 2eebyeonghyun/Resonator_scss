@@ -1,0 +1,41 @@
+@use '../abstracts/' as *;
+
+.gnb {
+    display: flex;
+    gap: 5.03rem;
+
+    /* 부모클래스 light클래스이면 폰트색상과 아이콘 색상을 흰색으로 변경한다. */
+    .light & {
+
+        li {
+
+            &.--active {
+
+                >a {
+                    border-color: $bgWhite;
+                }
+            }
+    
+            >a {
+                color: $fontWhite;
+            }
+        }
+    }
+
+    li {
+
+        /* active된 값에는 밑선을 준다. */
+        &.--active {
+            >a {
+                border-bottom: 1px solid $borderBlack;
+            }
+        }
+
+        a {
+            color: $fontBlack;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 2.1rem;
+        }
+    }
+}

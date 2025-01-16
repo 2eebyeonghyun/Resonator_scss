@@ -1,0 +1,47 @@
+@use '../abstracts/' as *;
+
+.header {
+    /* grid-template-columns을 통해 컨텐츠간 간격을 조정한다. */
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    align-items: center;
+    height: 11.5rem;
+    /* 마진인라인을 사용한 이유는 중복된 값을 사용하지 않고 좌우에 마진 값을 주기 위해 사용했습니다.*/
+    margin-inline: 4.6rem;
+
+    .gnb {
+        text-align: center;
+        justify-content: center;
+
+        >li {
+            transition: all .3s ease-in-out;
+
+            &:hover {
+                transform: translateY(-0.3rem);
+            }
+        }
+    }
+
+    @media (width < 1300px) {
+        margin-inline: auto;
+        max-width: 95%;
+
+        .gnb {
+            display: none;
+        }
+    }
+
+    @media (width < 768px) {
+        height: 8rem;
+
+        .logo {
+
+            >a {
+                width: 10rem;
+            }
+        }
+    }
+}

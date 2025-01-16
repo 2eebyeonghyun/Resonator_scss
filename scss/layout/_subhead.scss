@@ -1,0 +1,50 @@
+@use '../abstracts/' as *;
+
+.subhead {
+    height: 50rem;
+    margin-top: 11.5rem;
+    margin-inline: 4.5rem;
+    border-radius: 1rem;
+    position: relative;
+
+    &.podcast__subhead {
+        @include background('sub_head.png', center, null, size, cover);
+    }
+
+    &.host__subhead {
+        @include background('host_team.png', center, null, size, cover);
+    }
+
+    &.shop__subhead {
+        @include background('subhead_img4.png', center, null, size, cover);
+    }
+
+    .inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+    }
+
+    .subtitle {
+        font-weight: 700;
+        font-size: 5rem;
+        color: $fontWhite;
+    }
+
+    @media (width < 1300px) {
+        margin: 11.5rem auto 0;
+        max-width: 95%;
+        height: 30rem;
+    }
+
+    @media (width < 768px) {
+        margin-top: 8rem;
+        height: 20rem;
+
+        .subtitle {
+            font-size: 3rem;
+        }
+    }
+}

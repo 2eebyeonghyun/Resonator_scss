@@ -1,0 +1,1683 @@
+@charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css") layer(Reset);
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@font-face {
+  font-family: "Lato", serif;
+  src: url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Open Sans", serif;
+  src: url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+  font-weight: 400;
+  font-style: normal;
+}
+@layer Typography {
+  :is(*, *::before, *::after) {
+    content: "";
+    font-family: "Lato", serif;
+  }
+  html {
+    font-size: 62.5%;
+  }
+  body {
+    font-size: 1rem;
+    color: #000;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+br {
+  content: normal;
+}
+
+img,
+video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+video::-webkit-media-controls-fullscreen-button, video::-webkit-media-controls-play-button, video::-webkit-media-controls-timeline, video::-webkit-media-controls-current-time-display, video::-webkit-media-controls-time-remaining-display, video::-webkit-media-controls-mute-button, video::-webkit-media-controls-volume-slider, video::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.inner {
+  width: 100%;
+  /* 내부사이즈를 130rem으로 고정한다. */
+  max-width: 130rem;
+  margin: 0 auto;
+}
+@media (width < 1300px) {
+  .inner {
+    max-width: 95%;
+  }
+}
+
+@keyframes timeline_ball {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes timeline_line {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes Xmove {
+  0% {
+    transform: scaleX(1);
+    /* 원사이즈 */
+    transform-origin: 100% 0;
+    /* 우측기준점 */
+  }
+  50% {
+    transform: scaleX(0);
+    /* 축소 사이즈 */
+    transform-origin: 100% 0;
+    /* 우측기준점 */
+  }
+  51% {
+    transform: scaleX(0);
+    /* 축소 사이즈 */
+    transform-origin: 0 0;
+    /* 좌측기준점 */
+  }
+  100% {
+    transform: scaleX(1);
+    /* 원사이즈 */
+    transform-origin: 0 0;
+    /* 좌측기준점 */
+  }
+}
+.a11y-hidden {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.header {
+  /* grid-template-columns을 통해 컨텐츠간 간격을 조정한다. */
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  align-items: center;
+  height: 11.5rem;
+  /* 마진인라인을 사용한 이유는 중복된 값을 사용하지 않고 좌우에 마진 값을 주기 위해 사용했습니다.*/
+  margin-inline: 4.6rem;
+}
+.header .gnb {
+  text-align: center;
+  justify-content: center;
+}
+.header .gnb > li {
+  transition: all 0.3s ease-in-out;
+}
+.header .gnb > li:hover {
+  transform: translateY(-0.3rem);
+}
+@media (width < 1300px) {
+  .header {
+    margin-inline: auto;
+    max-width: 95%;
+  }
+  .header .gnb {
+    display: none;
+  }
+}
+@media (width < 768px) {
+  .header {
+    height: 8rem;
+  }
+  .header .logo > a {
+    width: 10rem;
+  }
+}
+
+.footer {
+  width: 100%;
+  background-color: #000;
+  padding: 13.4rem 0 13rem;
+}
+.footer .footer__content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 1.5rem;
+}
+.footer .content__logo {
+  width: 14.7rem;
+  margin-right: 18.55rem;
+}
+.footer .content__logo .logo__img {
+  display: block;
+  margin-bottom: 1.1rem;
+}
+.footer .content__logo .logo__text {
+  color: #969696;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 2.067rem;
+}
+.footer .content__information {
+  width: calc(100% - 33.25rem);
+}
+.footer .content__information .information__slogan {
+  width: 60.2106rem;
+  color: #fff;
+  font-size: 2.7rem;
+  font-weight: 700;
+  line-height: 3.402rem;
+  margin-bottom: 11.33rem;
+}
+.footer .content__information .information__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.footer .content__information .information__list > li {
+  height: 21.4703rem;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+}
+.footer .content__information .information__list > li .list__title {
+  color: #969696;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 2.304rem;
+  margin-bottom: 2.3rem;
+  display: block;
+}
+.footer .content__information .information__list > li .list__link__last {
+  color: #969696;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 2.067rem;
+  text-decoration: none;
+}
+.footer .content__information .information__list > li .list__link__last > a {
+  color: #ccc;
+  text-decoration: none;
+}
+@media (width < 1300px) {
+  .footer .footer__content {
+    padding: 0;
+    flex-direction: column;
+  }
+  .footer .content__logo {
+    margin-bottom: 3rem;
+    margin-right: 0;
+  }
+  .footer .content__information {
+    width: 100%;
+  }
+  .footer .content__information .information__slogan {
+    width: 100%;
+    margin-bottom: 5rem;
+  }
+  .footer .content__information .information__list {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+@media (width < 768px) {
+  .footer {
+    padding: 6.5rem 0;
+  }
+  .footer .content__information .information__slogan {
+    font-size: 2rem;
+    line-height: 2.8rem;
+  }
+  .footer .content__information .information__list > li {
+    height: 15rem;
+  }
+  .footer .content__information .information__list > li .list__title {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .footer .content__information .information__list > li .list__content.sns .list__link > i {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+  }
+  .footer .content__information .information__list > li .list__content .list__link {
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+  }
+}
+
+.sideMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  /* z-index값을 header보다 위로 주어 사이드메뉴가 위에 있게 배치한다. */
+  z-index: 1001;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);
+  padding: 0 4.5rem;
+  /* active가 되기전에는 넓이값이 0이고 숨김처리를 한다. */
+  width: 0;
+  display: none;
+}
+.sideMenu.--active {
+  /* actvie가 되면 넓이는 45rem으로 변경되고 display grid가 된다. */
+  width: 45rem;
+  display: grid;
+  gap: 5rem;
+  grid-template-rows: 11.5rem min-content min-content;
+}
+.sideMenu .btn-wrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.sideMenu .btn-wrap .btn-menu .btn-menu__line.__line2 {
+  justify-content: center;
+}
+.sideMenu .gnb {
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
+  margin-bottom: 5rem;
+}
+.sideMenu .gnb > li:hover > a {
+  color: #000;
+}
+.sideMenu .gnb > li.--active > a {
+  border-bottom: 0;
+}
+.sideMenu .gnb > li > a {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #8e8b8c;
+  transition: all 0.3s ease-in-out;
+}
+.sideMenu .company__information {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.sideMenu .company__information .row__title {
+  font-size: 2.3rem;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1rem;
+  display: block;
+}
+.sideMenu .company__information .linkBox__link {
+  line-height: 1.5;
+  font-weight: 400;
+}
+:is(.sideMenu .company__information .linkBox__link:hover, .sideMenu .company__information .linkBox__link:hover > i) {
+  color: #000;
+}
+@media (width < 768px) {
+  .sideMenu {
+    padding: 0 2rem;
+  }
+  .sideMenu.--active {
+    width: 100%;
+    gap: 3.5rem;
+    grid-template-rows: 8rem min-content min-content;
+  }
+  .sideMenu .gnb {
+    gap: 3.5rem;
+  }
+  .sideMenu .gnb > li > a {
+    font-size: 2.3rem;
+  }
+  .sideMenu .company__information {
+    gap: 1.7rem;
+  }
+  .sideMenu .company__information .row__title {
+    font-size: 1.6rem;
+  }
+  .sideMenu .company__information .linkBox__link {
+    font-size: 1.4rem;
+  }
+}
+
+.subhead {
+  height: 50rem;
+  margin-top: 11.5rem;
+  margin-inline: 4.5rem;
+  border-radius: 1rem;
+  position: relative;
+}
+.subhead.podcast__subhead {
+  background: url(/img/sub_head.png) no-repeat center;
+  background-size: cover;
+}
+.subhead.host__subhead {
+  background: url(/img/host_team.png) no-repeat center;
+  background-size: cover;
+}
+.subhead.shop__subhead {
+  background: url(/img/subhead_img4.png) no-repeat center;
+  background-size: cover;
+}
+.subhead .inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+.subhead .subtitle {
+  font-weight: 700;
+  font-size: 5rem;
+  color: #fff;
+}
+@media (width < 1300px) {
+  .subhead {
+    margin: 11.5rem auto 0;
+    max-width: 95%;
+    height: 30rem;
+  }
+}
+@media (width < 768px) {
+  .subhead {
+    margin-top: 8rem;
+    height: 20rem;
+  }
+  .subhead .subtitle {
+    font-size: 3rem;
+  }
+}
+
+.main--page .section {
+  /* 메인비주얼 영역 CSS */
+  /* 에피소드 소개 영역 CSS */
+  /* 인기 팟캐스트 영역 CSS */
+  /* 필수 에피소드 영역 CSS */
+  /* 비디오 영역 CSS */
+  /* 호스트소개 영역 CSS */
+}
+.main--page .section.section01 {
+  position: relative;
+  height: 90rem;
+  background: url(/img/@thumbnail_img.png) no-repeat center;
+  background-size: cover;
+}
+.main--page .section.section01 .inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.main--page .section.section01 .section01__textBox .textBox__btnWrap {
+  display: flex;
+  gap: 2.3rem;
+  align-items: center;
+}
+.main--page .section.section03 {
+  background-color: #fff;
+  padding: 14rem 0 15.17rem;
+}
+.main--page .section.section03 .contents {
+  width: 100%;
+  display: flex;
+  gap: 25.5rem;
+  justify-content: space-between;
+  align-items: center;
+  /* 소개영역과 이미지 영역을 flex를 통해 넓이값을 고정시킨다. */
+}
+.main--page .section.section03 .contents .contents__textBox {
+  flex: 0 0 40%;
+}
+.main--page .section.section03 .contents .contents__textBox .section__title {
+  margin-bottom: 2.8rem;
+}
+.main--page .section.section03 .contents .contents__textBox .textBox__information .information__episode {
+  display: flex;
+  gap: 2.1rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.main--page .section.section03 .contents .contents__textBox .textBox__information .information__textarea {
+  margin-bottom: 3.13rem;
+}
+.main--page .section.section03 .contents .contents__pictureBox {
+  position: relative;
+  flex: 0 0 40%;
+  /* 이미지 왼쪽 텍스트를 90도 회전시켜 absolute로 배치하는 작업을 했고 z-index를 이미지보다 아래로 주어 밑에 보이도록 작업했습니다. */
+}
+.main--page .section.section03 .contents .contents__pictureBox img {
+  position: relative;
+  z-index: 2;
+  border-radius: 1rem;
+  box-shadow: var(--boxShadow);
+}
+.main--page .section.section04 {
+  background-color: #f8f8f8;
+  padding: 9.2rem 0 10.7rem;
+  text-align: center;
+  overflow: hidden;
+}
+.main--page .section.section04 .topPodSwiper {
+  position: relative;
+}
+.main--page .section.section04 .swiper-slide {
+  display: flex;
+  height: 39.25rem;
+}
+.main--page .section.section04 .swiper-slide .slide__img {
+  width: 50%;
+  height: 100%;
+}
+.main--page .section.section04 .swiper-slide .slide__img > a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.main--page .section.section04 .swiper-slide .slide__information {
+  width: 50%;
+  padding: 0 4.5rem;
+  text-align: left;
+}
+.main--page .section.section05 {
+  padding: 12.4rem 0 21rem;
+}
+.main--page .section.section05 .contents .section__headingBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main--page .section.section05 .contents .section__headingBox .section__title {
+  margin-bottom: 0;
+}
+.main--page .section.section06 {
+  height: 71.0609rem;
+  overflow: hidden;
+}
+.main--page .section.section07 {
+  padding: 12.7rem 0 13.8rem;
+}
+.main--page .section.section07 .section__headingBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main--page .section.section07 .section__headingBox .section__title {
+  margin-bottom: 0;
+}
+.main--page .section.section07 .gird__list .card__imgBox {
+  height: 44.7219rem;
+}
+.main--page .section.section07 .gird__list .card__informationBox .informationBox__title {
+  margin-bottom: 0.8rem;
+}
+.main--page .section.section07 .gird__list .card__informationBox .informationBox__title::after {
+  display: none;
+}
+.main--page .section.section07 .gird__list .card__informationBox .informationBox__job {
+  margin-bottom: 2.53rem;
+}
+@media (width < 1300px) {
+  .main--page .section.section01 .section01__textBox .textBox__title {
+    font-size: 5.5rem;
+    line-height: 6.5rem;
+  }
+  .main--page .section.section01 .section01__textBox .textBox__information {
+    font-size: 1.6rem;
+  }
+  .main--page .section.section01 .section01__textBox .textBox__btnWrap {
+    gap: 2rem;
+  }
+  .main--page .section.section01 .section01__textBox .textBox__btnWrap .btn {
+    width: 15rem;
+  }
+  .main--page .section.section03 .contents {
+    gap: 3rem;
+    align-items: flex-start;
+  }
+  .main--page .section.section03 .contents .contents__textBox {
+    flex: 0 0 calc(65% - 3rem);
+  }
+  .main--page .section.section03 .contents .contents__pictureBox {
+    flex: 0 0 35%;
+  }
+  .main--page .section.section03 .contents .contents__pictureBox .pictureBox__text {
+    translate: 0 0;
+    font-size: 3.8rem;
+    top: auto;
+    bottom: -2rem;
+    left: 0;
+    transform: rotate(0);
+  }
+  .main--page .section.section04 .swiper__list {
+    height: 40rem;
+  }
+  .main--page .section.section04 .swiper__list .swiper-wrapper {
+    gap: 3rem;
+  }
+  .main--page .section.section04 .swiper__list .swiper-slide {
+    width: 65rem;
+    height: 35rem;
+  }
+  .main--page .section.section07 .gird__list .card__imgBox {
+    height: 35rem;
+  }
+}
+@media (width < 768px) {
+  .main--page .section.section01 {
+    height: 70rem;
+    background-position: left;
+  }
+  .main--page .section.section01 .section01__textBox .textBox__title {
+    font-size: 4.3rem;
+    line-height: 5.3rem;
+  }
+  .main--page .section.section01 .section01__textBox .textBox__information {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    margin-bottom: 3rem;
+  }
+  .main--page .section.section01 .section01__textBox .textBox__btnWrap {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .main--page .section.section01 .section01__textBox .textBox__btnWrap .btn {
+    width: 20rem;
+  }
+  .main--page .section.section03 {
+    padding: 7rem 0;
+  }
+  .main--page .section.section03 .contents {
+    flex-direction: column;
+  }
+  .main--page .section.section03 .contents .contents__textBox {
+    order: 2;
+    width: 100%;
+  }
+  .main--page .section.section03 .contents .contents__pictureBox {
+    order: 1;
+    width: 100%;
+  }
+  .main--page .section.section04 {
+    padding: 7rem 0;
+  }
+  .main--page .section.section04 .contents .section__headingBox {
+    text-align: center;
+  }
+  .main--page .section.section04 .swiper__list .swiper-slide {
+    width: 25rem;
+    height: auto;
+    flex-direction: column;
+  }
+  .main--page .section.section04 .swiper__list .swiper-slide .slide__img {
+    width: 100%;
+    height: 20rem;
+  }
+  .main--page .section.section04 .swiper__list .swiper-slide .slide__information {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .main--page .section.section04 .swiper__list .swiper-slide .slide__information .information__title {
+    font-size: 1.8rem;
+  }
+  .main--page .section.section05 {
+    padding: 7rem 0;
+  }
+  .main--page .section.section07 {
+    padding: 7rem 0;
+  }
+}
+
+.podcast--page .section.section01 {
+  padding: 14rem 0;
+}
+.podcast--page .section.section01 .gird__list {
+  /* 사용자 편의를 위해 card를 두개씩 배치 */
+  grid-template-columns: repeat(2, 1fr);
+  /* btn-play는 동일한 구조로 사용하는게 좋을 거 같아서 삭제 하였고 detail 클래스에 넓이값을 추가햇습니다. */
+}
+.podcast--page .section.section01 .gird__list .card__informationBox {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  /* card에 이미지 꽉 채워서 보여주기 위해 padding을 0으로 줌 */
+  padding: 0;
+}
+.podcast--page .section.section01 .gird__list .card__informationBox:hover .card__imgBox img {
+  transform: scale(1.1);
+  opacity: 0.7;
+  transition: transform 0.7s, opacity 0.7s;
+}
+.podcast--page .section.section01 .gird__list .card__content {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 2.5rem;
+}
+.podcast--page .section.section01 .gird__list .content__episode {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  /* 20241218 마진바텀 추가했습니다. */
+  margin-bottom: 3rem;
+}
+.podcast--page .section.section01 .gird__list .content__episode .content__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.podcast--page .section.section01 .gird__list .content__episode .content__info .content__num {
+  color: #8e8b8c;
+  font-size: 1.5rem;
+}
+.podcast--page .section.section01 .gird__list .info__playnsubtitle {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.podcast--page .section.section01 .gird__list .info__playnsubtitle .content__detail {
+  width: calc(100% - 9rem);
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.5;
+  position: relative;
+}
+.podcast--page .section.section01 .gird__list .card__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+@media (width < 1300px) {
+  .podcast--page .section.section01 .gird__list .card__content .content__episode .content__info .content__num {
+    font-size: 1.3rem;
+  }
+  .podcast--page .section.section01 .gird__list .card__content .info__playnsubtitle .content__detail {
+    width: calc(100% - 4.5rem);
+    display: inline-block;
+    font-size: 1.7rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+}
+@media (width < 768px) {
+  .podcast--page .section.section01 {
+    padding: 7rem 0;
+  }
+  .podcast--page .section.section01 .gird__list {
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .podcast--page .section.section01 .gird__list .card__imgBox {
+    height: 30rem;
+  }
+  .podcast--page .section.section01 .gird__list .card__content {
+    padding: 2rem;
+  }
+  .podcast--page .section.section01 .gird__list .content__episode .content__title {
+    display: inline-block;
+    font-size: 3.5rem;
+  }
+  .podcast--page .section.section01 .gird__list .content__episode .content__info .content__num {
+    font-size: 1.5rem;
+  }
+  .podcast--page .section.section01 .gird__list .content__episode .content__info .content__detail {
+    display: inline-block;
+    font-size: 1.7rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.logo > a {
+  width: 13rem;
+  display: block;
+}
+
+.gnb {
+  display: flex;
+  gap: 5.03rem;
+  /* 부모클래스 light클래스이면 폰트색상과 아이콘 색상을 흰색으로 변경한다. */
+}
+.light .gnb li.--active > a {
+  border-color: #fff;
+}
+.light .gnb li > a {
+  color: #fff;
+}
+.gnb li {
+  /* active된 값에는 밑선을 준다. */
+}
+.gnb li.--active > a {
+  border-bottom: 1px solid #000;
+}
+.gnb li a {
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2.1rem;
+}
+
+.utillity {
+  display: flex;
+  gap: 3.77rem;
+  align-items: center;
+  /* 부모클래스 light클래스이면 폰트색상과 아이콘 색상을 흰색으로 변경한다. */
+}
+.light .utillity .btn-search::before {
+  filter: invert(1);
+}
+.light .utillity .btn-search span {
+  color: #fff;
+}
+.light .utillity .btn-menu .btn-menu__line .btn-menu__dot {
+  background-color: #fff;
+}
+@media (width < 768px) {
+  .utillity .utillity {
+    gap: 2rem;
+  }
+  .utillity .utillity .btn-search span {
+    display: none;
+  }
+}
+
+.btn-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2.1rem;
+}
+.btn-search::before {
+  content: "";
+  width: 1.6rem;
+  height: 2.1rem;
+  background: url(/img/ico_search.svg) no-repeat center;
+  background-size: contain;
+}
+
+.btn-mute {
+  width: 5rem;
+  height: 5.1rem;
+  background: url(/img/ico_mute.svg) no-repeat center;
+  background-size: contain;
+  display: block;
+}
+
+.btn-sound {
+  width: 4.6rem;
+  aspect-ratio: 1;
+  background: url(/img/ico_sound.svg) no-repeat center;
+  background-size: contain;
+  display: block;
+}
+
+.btn-play {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.podcast--page .btn-play i {
+  font-size: 1.2rem;
+}
+
+.btn-skip10 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-jump10 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-menu {
+  display: flex;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  gap: 0.5rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.btn-menu .btn-menu__line {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.btn-menu .btn-menu__line .btn-menu__dot {
+  width: 0.5rem;
+  aspect-ratio: 1;
+  background-color: #000;
+  border-radius: 50%;
+}
+@media (width < 768px) {
+  .btn-menu {
+    width: 2rem;
+  }
+  .btn-menu .btn-menu__line .btn-menu__dot {
+    width: 0.3rem;
+  }
+}
+
+.btn-episode {
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 3rem;
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+  /* 에피소드 버튼에 마우스를 올리면 Xmove 애니메이션이 발동 */
+}
+.btn-episode:hover img {
+  animation: Xmove 0.7s ease-in-out forwards;
+}
+.btn-episode img {
+  width: 1.9rem;
+  height: 1.4rem;
+  margin-left: 1.17rem;
+}
+@media (width < 768px) {
+  .btn-episode {
+    font-size: 1.3rem;
+  }
+  .btn-episode img {
+    width: 1.2rem;
+    height: 0.8rem;
+  }
+}
+
+.btn-facebook::after {
+  content: "";
+  width: 1.2rem;
+  aspect-ratio: 1;
+  background: url(/img/ico_facebook.svg) no-repeat center;
+  background-size: contain;
+  background-size: cover;
+}
+
+.btn-instagram::after {
+  content: "";
+  width: 1.2rem;
+  aspect-ratio: 1;
+  background: url(/img/ico_instagram.svg) no-repeat center;
+  background-size: contain;
+  background-size: cover;
+}
+
+.btn-twitter::after {
+  content: "";
+  width: 1.2rem;
+  aspect-ratio: 1;
+  background: url(/img/ico_twitter.svg) no-repeat center;
+  background-size: contain;
+  background-size: cover;
+}
+
+.section__title {
+  color: #000;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 5.5rem;
+  margin-bottom: 2rem;
+}
+@media (width < 1300px) {
+  .section__title {
+    font-size: 3.5rem;
+    line-height: 4rem;
+  }
+}
+@media (width < 768px) {
+  .section__title {
+    width: 100%;
+    font-size: 2.7rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.section__information {
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 2.703rem;
+}
+@media (width < 768px) {
+  .section__information {
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+}
+
+.information__title {
+  color: #000;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 2.703rem;
+  margin-bottom: 0.1rem;
+}
+
+.information__text {
+  color: #8e8b8c;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.703rem;
+}
+
+.categoryBox__text {
+  color: #8e8b8c;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.703rem;
+}
+@media (width < 768px) {
+  .categoryBox__text {
+    font-size: 1.2rem;
+    line-height: 1.3;
+  }
+}
+
+.visual__title {
+  color: #000;
+  font-size: 9.5rem;
+  font-weight: 700;
+  line-height: 10.3rem;
+  margin-bottom: 1.4rem;
+}
+
+.visual__text {
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 2.7rem;
+  margin-bottom: 5rem;
+}
+
+.textBox__title {
+  width: 40.4794rem;
+  color: #000;
+  font-size: 3.8rem;
+  font-weight: 700;
+  line-height: 4.408rem;
+  text-decoration: none;
+}
+@media (width < 1300px) {
+  .textBox__title {
+    width: 30rem;
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+}
+@media (width < 768px) {
+  .textBox__title {
+    width: 100%;
+    font-size: 2.5rem;
+  }
+}
+
+.textarea__text {
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 2.703rem;
+  margin-bottom: 2rem;
+}
+.textarea__text:last-of-type {
+  margin-bottom: 0;
+}
+
+.pictureBox__text {
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  translate: -25px -50%;
+  transform: rotate(-90deg);
+  color: #f8f8f8;
+  font-size: 9.2rem;
+  font-weight: 600;
+  line-height: 2.703rem;
+  z-index: 1;
+}
+
+.informationBox__title {
+  color: #000;
+  font-size: 2.7rem;
+  font-weight: 700;
+  line-height: 3.402rem;
+  text-decoration: none;
+  display: inline;
+  background-repeat: no-repeat;
+  background-position-y: 0px;
+  background-image: linear-gradient(transparent calc(100% - 2px), currentColor 1px);
+  transition: 0.6s ease-in-out;
+  background-size: 0 100%;
+  backface-visibility: hidden;
+}
+.informationBox__title:hover {
+  background-size: 100% 100%;
+}
+@media (width < 768px) {
+  .informationBox__title {
+    font-size: 2rem;
+    line-height: 1.4;
+  }
+}
+
+.episodeBox {
+  /* 영역을 아래 마진탑 값 만큼 이동시킨다. */
+  margin-top: -15.36rem;
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+}
+.episodeBox .episodeBox__img {
+  width: 29.1rem;
+  aspect-ratio: 1;
+}
+.episodeBox .episodeBox__information {
+  padding: 3.4rem 3.8rem 3.3rem 6.3rem;
+  width: calc(100% - 29.1rem);
+}
+.episodeBox .episodeBox__information .information__textBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem;
+  margin-bottom: 1.02rem;
+}
+.episodeBox .episodeBox__information .information__subBox {
+  width: 100%;
+}
+.episodeBox .episodeBox__information .information__subBox .subBox__episode {
+  width: 100%;
+  margin-bottom: 2.7rem;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+.episodeBox .episodeBox__information .information__subBox .subBox__options {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.episodeBox .episodeBox__information .information__subBox .subBox__options .btn-mute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 2;
+}
+@media (width < 1300px) {
+  .episodeBox .episodeBox__img {
+    width: 20rem;
+  }
+  .episodeBox .episodeBox__information {
+    padding: 1.5rem;
+    width: calc(100% - 20rem);
+  }
+  .episodeBox .episodeBox__information .information__subBox .subBox__episode {
+    margin-bottom: 2rem;
+  }
+  .episodeBox .episodeBox__information .information__subBox .subBox__options {
+    flex-wrap: wrap;
+    justify-content: normal;
+    gap: 0 3rem;
+  }
+  .episodeBox .episodeBox__information .information__subBox .subBox__options .options__sound {
+    order: 5;
+  }
+  .episodeBox .options__button.options__play {
+    order: 1;
+  }
+  .episodeBox .options__button.options__button1 {
+    order: 2;
+  }
+  .episodeBox .options__button.options__button2 {
+    order: 3;
+  }
+  .episodeBox .options__timeline {
+    width: 100%;
+    order: 6;
+    margin-top: 1.5rem;
+  }
+  .episodeBox .options__timeline .timeline__line {
+    width: 100%;
+  }
+  .episodeBox .options__time {
+    order: 4;
+  }
+}
+@media (width < 768px) {
+  .episodeBox {
+    margin-top: -10rem;
+  }
+  .episodeBox .episodeBox__img {
+    display: none;
+  }
+  .episodeBox .episodeBox__information {
+    width: 100%;
+  }
+  .episodeBox .episodeBox__information .information__textBox {
+    padding-left: 0;
+  }
+  .episodeBox .episodeBox__information .information__textBox .textBox__link {
+    display: none;
+  }
+  .episodeBox .episodeBox__information .information__subBox .subBox__episode {
+    padding-left: 0;
+  }
+  .episodeBox .episodeBox__information .information__subBox .subBox__options .options__play {
+    width: 6rem;
+  }
+  .episodeBox .episodeBox__information .information__subBox .subBox__options .options__time,
+  .episodeBox .episodeBox__information .information__subBox .subBox__options .options__sound {
+    display: none;
+  }
+}
+
+.episode__categoryBox {
+  margin-bottom: 0.3rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.options__button.options__play {
+  width: 7rem;
+  aspect-ratio: 1;
+  border-radius: 7rem;
+  border: 2px solid #cecece;
+  transition: border 0.3s ease-in-out;
+}
+.options__button.options__play:hover {
+  border: 2px solid #000;
+}
+.options__button.options__button1, .options__button.options__button2 {
+  display: flex;
+  width: 4.5rem;
+  height: 5rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.options__button .button__text {
+  color: #8e8b8c;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 0rem;
+}
+@media (width < 1300px) {
+  .options__button.options__play {
+    width: 4.5rem;
+  }
+  .options__button.options__button1, .options__button.options__button2 {
+    width: 3rem;
+    height: 4rem;
+  }
+}
+
+.options__timeline {
+  width: 66rem;
+  position: relative;
+  /* 원형과 그래프에 애니메이션을 주어 좀 더 효과를 주었습니다. */
+}
+.options__timeline .timeline__ball {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  translate: 0 -50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 0.6rem;
+  background-color: #000;
+  animation: timeline_ball 60s infinite forwards;
+}
+.options__timeline .timeline__line {
+  display: flex;
+  width: 100%;
+  height: 0.2rem;
+  align-items: center;
+  background-color: #000;
+}
+.options__timeline .timeline__line::after {
+  content: "";
+  display: block;
+  /* 타입라인_라인 애니메이션을주 60초동안 재생하고 무한 반복한다. */
+  animation: timeline_line 60s infinite forwards;
+  height: 0.2rem;
+  background-color: #8e8b8c;
+}
+
+.options__time {
+  width: 13rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.options__time .time__text {
+  color: #8e8b8c;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1rem;
+}
+.options__time .time__text:nth-child(1)::after {
+  content: "/";
+  display: inline-block;
+  padding-left: 0.5rem;
+}
+
+.options__sound {
+  position: relative;
+  width: 5rem;
+  height: 5.1rem;
+}
+.options__sound:hover .sound__options {
+  display: block;
+}
+.options__sound .sound__options {
+  display: none;
+  position: absolute;
+  top: -4.5rem;
+  left: 50%;
+  translate: -50% 0;
+  transform: rotate(-90deg);
+  background-color: #fff;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+  border-radius: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+.options__sound .sound__options .options_range {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 0.5rem;
+  width: 8rem;
+  background-color: #ccc;
+  border-radius: 1rem;
+  outline: none;
+}
+.options__sound .sound__options .options_range::-webkit-slider-thumb {
+  width: 1rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-color: #000;
+}
+
+.options__dots {
+  display: flex;
+  gap: 2.6rem;
+  align-items: center;
+}
+.options__dots > li {
+  /* 버튼에 active가 들어간 버튼에 효과를 준다. */
+}
+.options__dots > li.active > a::after, .options__dots > li:hover > a::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  aspect-ratio: 1;
+  border: 1px solid #8e8b8c;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.options__dots > li > a {
+  position: relative;
+  width: 0.6rem;
+  aspect-ratio: 1;
+  background-color: #000;
+  border-radius: 50%;
+  display: block;
+}
+
+.gird__list {
+  display: grid;
+  gap: 7rem;
+  /* 한 줄에 일정한 크기로 3개 구성 */
+  grid-template-columns: repeat(3, 1fr);
+}
+.gird__list > li {
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);
+}
+.gird__list > li:hover .card__imgBox img {
+  transform: scale(1.1);
+}
+.gird__list .card__informationBox {
+  padding: 2.8rem 3.8rem 3.7rem;
+}
+.gird__list .card__imgBox {
+  position: relative;
+  overflow: hidden;
+  height: 38.6656rem;
+}
+.gird__list .card__imgBox img {
+  transition: all 0.3s ease-in-out;
+}
+.gird__list .card__imgBox .btn-sound {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.gird__list .informationBox__job {
+  color: #8e8b8c;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.226rem;
+  display: block;
+}
+.gird__list .episode__information {
+  margin-bottom: 0.4rem;
+}
+.gird__list .informationBox__share_list {
+  display: inline-block;
+}
+.gird__list .informationBox__share_list .share__title {
+  color: #8e8b8c;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.792rem;
+  text-decoration: none;
+  display: flex;
+  gap: 0.53rem;
+  flex-direction: row;
+  align-items: center;
+}
+.gird__list .informationBox__share_list .share__title::after {
+  content: "";
+  display: block;
+  width: 2.1rem;
+  aspect-ratio: 1;
+  background: url(/img/ico_share.svg) no-repeat center;
+}
+.gird__list .informationBox__sns {
+  display: flex;
+  gap: 1.54rem;
+  align-items: center;
+}
+.gird__list .informationBox__sns > li {
+  width: 2.2rem;
+  aspect-ratio: 1;
+  background-color: #8e8b8c;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+.gird__list .informationBox__sns > li:hover {
+  background-color: #000;
+}
+.gird__list .informationBox__sns > li > a {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+@media (width < 1300px) {
+  .gird__list {
+    gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gird__list .card__imgBox {
+    height: 35rem;
+  }
+  .gird__list .card__informationBox {
+    padding: 2.5rem;
+  }
+}
+@media (width < 768px) {
+  .gird__list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .gird__list .card__imgBox {
+    height: 30rem;
+  }
+  .gird__list .card__informationBox {
+    padding: 2rem;
+  }
+  .gird__list .informationBox__job {
+    font-size: 1.2rem;
+  }
+}
+
+.section__headingBox {
+  text-align: center;
+  margin-bottom: 6.5rem;
+}
+.section__headingBox.sub__headingBox {
+  text-align: left;
+}
+@media (width < 768px) {
+  .section__headingBox {
+    flex-wrap: wrap;
+    text-align: left;
+    margin-bottom: 4rem;
+  }
+}
+
+.informationBox__titleBox {
+  margin-bottom: 2.71rem;
+  display: block;
+}
+
+.textBox__btnWrap {
+  display: flex;
+  gap: 2.3rem;
+  align-items: center;
+}
+
+.swiper-wrapper {
+  margin-bottom: 6rem;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* dot 버튼도 슬라이드 이미지와 같이 absolute을 사용하여 커스텀했습니다. */
+.swiper-pagination {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.swiper-pagination .swiper-pagination-bullet {
+  margin: 0;
+  opacity: 1;
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: #000;
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+  position: relative;
+}
+.swiper-pagination .swiper-pagination-bullet-active::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 1.8rem;
+  aspect-ratio: 1;
+  border: 1px solid #8e8b8c;
+  border-radius: 100%;
+}
+
+.videoBox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.videoBox:hover .videoBox__btn.pause {
+  display: block;
+}
+
+.videoBox__video {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+}
+
+.videoBox__btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 9rem;
+  aspect-ratio: 1;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.videoBox__btn.pause {
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.form__row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.__input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ededed;
+  border-right: 0;
+  outline: none;
+  padding: 0 1rem;
+  font-size: 1.6rem;
+  color: #000;
+}
+
+.btn-form {
+  width: 15rem;
+  height: 5rem;
+  background-color: #000;
+}
+.btn-form span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.list__linkBox.sns .linkBox__link {
+  display: inline-block;
+  margin-right: 2rem;
+}
+.list__linkBox.sns .linkBox__link:last-child {
+  margin-right: 0;
+}
+
+.linkBox__link {
+  color: #ccc;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 2.703rem;
+  text-decoration: none;
+  transition: color 0.3s;
+  display: block;
+}
+.linkBox__link > i {
+  color: #969696;
+  font-size: 2.1rem;
+  font-weight: 400;
+  line-height: 2.1rem;
+  transition: color 0.3s;
+}
+.linkBox__link:hover {
+  color: #fff;
+}
+.linkBox__link:hover > i {
+  color: #fff;
+}/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,138 @@
+@use '../abstracts/' as *;
+
+.gird__list {
+    display: grid;
+    gap: 7rem;
+    /* 한 줄에 일정한 크기로 3개 구성 */
+    grid-template-columns: repeat(3, 1fr);
+
+    >li {
+        background-color: $bgWhite;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: $boxShadow;
+
+        &:hover {
+
+            .card__imgBox {
+
+                img {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+
+    .card__informationBox {
+        padding: 2.8rem 3.8rem 3.7rem;
+    }
+
+    .card__imgBox {
+        position: relative;
+        overflow: hidden;
+        height: 38.6656rem;
+
+        img {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-sound {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+    }
+
+    .informationBox__job {
+        color: $fontColor2;
+        font-family: $subFont;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 2.226rem;
+        display: block;
+    }
+
+    .episode__information {
+        margin-bottom: 0.4rem;
+    }
+
+    .informationBox__share_list {
+        display: inline-block;
+
+        .share__title {
+            color: $fontColor2;
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1.792rem;
+            text-decoration: none;
+            display: flex;
+            gap: 0.53rem;
+            flex-direction: row;
+            align-items: center;
+
+            &::after {
+                content: "";
+                display: block;
+                width: 2.1rem;
+                aspect-ratio: 1;
+                @include background('ico_share.svg', center, null);
+            }
+        }
+    }
+
+    .informationBox__sns {
+        display: flex;
+        gap: 1.54rem;
+        align-items: center;
+
+        >li {
+            width: 2.2rem;
+            aspect-ratio: 1;
+            background-color: $bg3;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: $bgBlack;
+            }
+
+            >a {
+                width: 100%;
+                aspect-ratio: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $fontWhite;
+            }
+        }
+    }
+
+    @media (width < 1300px) {
+        gap: 3rem;
+        grid-template-columns: repeat(2, 1fr);
+
+        .card__imgBox {
+            height: 35rem;
+        }
+
+        .card__informationBox {
+            padding: 2.5rem;
+        }
+    }
+
+    @media (width < 768px) {
+        grid-template-columns: repeat(1, 1fr);
+
+        .card__imgBox {
+            height: 30rem;
+        }
+
+        .card__informationBox {
+            padding: 2rem;
+        }
+
+        .informationBox__job {
+            font-size: 1.2rem;
+        }
+    }
+}

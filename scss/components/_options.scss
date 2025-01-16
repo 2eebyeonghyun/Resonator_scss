@@ -1,0 +1,190 @@
+@use '../abstracts/' as *;
+
+.options__button {
+
+    &.options__play {
+        width: 7rem;
+        aspect-ratio: 1;
+        border-radius: 7rem;
+        border: 2px solid #cecece;
+        transition: border 0.3s ease-in-out;
+
+        &:hover {
+            border: 2px solid $borderBlack;
+        }
+    }
+
+    &.options__button1,
+    &.options__button2 {
+        display: flex;
+        width: 4.5rem;
+        height: 5rem;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .button__text {
+        color: $fontColor2;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 0rem;
+    }
+
+    @media (width < 1300px) {
+        &.options__play {
+            width: 4.5rem;
+        }
+
+        &.options__button1,
+        &.options__button2 {
+            width: 3rem;
+            height: 4rem;
+        }
+    }
+}
+
+.options__timeline {
+    width: 66rem;
+    position: relative;
+
+    /* 원형과 그래프에 애니메이션을 주어 좀 더 효과를 주었습니다. */
+    .timeline__ball {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        translate: 0 -50%;
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 0.6rem;
+        background-color: $bgBlack;
+        animation: timeline_ball 60s infinite forwards;
+    }
+
+    .timeline__line {
+        display: flex;
+        width: 100%;
+        height: 0.2rem;
+        align-items: center;
+        background-color: $bgBlack;
+
+        &::after {
+            content: "";
+            display: block;
+            /* 타입라인_라인 애니메이션을주 60초동안 재생하고 무한 반복한다. */
+            animation: timeline_line 60s infinite forwards;
+            height: 0.2rem;
+            background-color: $bg3;
+        }
+    }
+}
+
+.options__time {
+    width: 13rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    .time__text {
+        color: $fontColor2;
+        text-align: center;
+        font-family: $subFont;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 1rem;
+
+        &:nth-child(1) {
+            &::after {
+                content: "/";
+                display: inline-block;
+                padding-left: 0.5rem;
+            }
+        }
+    }
+}
+
+.options__sound {
+    position: relative;
+    width: 5rem;
+    height: 5.1rem;
+
+    &:hover {
+
+        .sound__options {
+            display: block;
+        }
+    }
+
+    .sound__options {
+        display: none;
+        position: absolute;
+        top: -4.5rem;
+        left: 50%;
+        translate: -50% 0;
+        transform: rotate(-90deg);
+        background-color: $bgWhite;
+        box-shadow: $boxShadow;
+        padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+        border-radius: 1.5rem;
+        transition: all 0.3s ease-in-out;
+
+        .options_range {
+            appearance: none;
+            height: 0.5rem;
+            width: 8rem;
+            background-color: #ccc;
+            border-radius: 1rem;
+            outline: none;
+
+            &::-webkit-slider-thumb {
+                width: 1rem;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                -webkit-appearance: none;
+                cursor: pointer;
+                background-color: $bgBlack;
+            }
+        }
+    }
+}
+
+.options__dots {
+    display: flex;
+    gap: 2.6rem;
+    align-items: center;
+
+    >li {
+
+        /* 버튼에 active가 들어간 버튼에 효과를 준다. */
+        &.active,
+        &:hover {
+
+            >a {
+                
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 2rem;
+                    aspect-ratio: 1;
+                    border: 1px solid $border2;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    translate: -50% -50%;
+                }
+            }
+        }
+
+        >a {
+            position: relative;
+            width: 0.6rem;
+            aspect-ratio: 1;
+            background-color: $bgBlack;
+            border-radius: 50%;
+            display: block;
+        }
+    }
+}

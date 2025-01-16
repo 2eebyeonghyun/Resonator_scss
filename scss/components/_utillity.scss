@@ -1,0 +1,46 @@
+@use '../abstracts/' as *;
+
+.utillity {
+    display: flex;
+    gap: 3.77rem;
+    align-items: center;
+
+    /* 부모클래스 light클래스이면 폰트색상과 아이콘 색상을 흰색으로 변경한다. */
+    .light & {
+
+        .btn-search {
+
+            &::before {
+                filter: invert(1);
+            }
+
+            span {
+                color: $fontWhite;
+            }
+        }
+
+        .btn-menu {
+            & .btn-menu__line {
+
+                .btn-menu__dot {
+                    background-color: $bgWhite;
+                }
+            }
+        }
+    }
+
+    @media (width < 768px) {
+
+        .utillity {
+            gap: 2rem;
+    
+            .btn-search {
+    
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+

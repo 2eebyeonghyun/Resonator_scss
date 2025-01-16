@@ -1,0 +1,159 @@
+@use '../abstracts/' as *;
+
+.btn-search {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: $fontBlack;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2.1rem;
+
+    &::before {
+        content: "";
+        width: 1.6rem;
+        height: 2.1rem;
+        @include background('ico_search.svg', center, null, size, contain);
+    }
+}
+
+.btn-mute {
+    width: 5rem;
+    height: 5.1rem;
+    @include background('ico_mute.svg', center, null, size, contain);
+    display: block;
+}
+
+.btn-sound {
+    width: 4.6rem;
+    aspect-ratio: 1;
+    @include background('ico_sound.svg', center, null, size, contain);
+    display: block;
+}
+
+.btn-play {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+
+    .podcast--page & {
+
+        i {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.btn-skip10 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-jump10 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-menu {
+    display: flex;
+    width: 2.5rem;
+    aspect-ratio: 1;
+    gap: 0.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .btn-menu__line {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .btn-menu__dot {
+            width: 0.5rem;
+            aspect-ratio: 1;
+            background-color: $bgBlack;
+            border-radius: 50%;
+        }
+    }
+
+    @media (width < 768px) {
+        width: 2rem;
+
+        .btn-menu__line {
+            .btn-menu__dot {
+                width: 0.3rem;
+            }
+        }
+    }
+}
+
+.btn-episode {
+    color: $fontBlack;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 3rem;
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+
+    /* 에피소드 버튼에 마우스를 올리면 Xmove 애니메이션이 발동 */
+    &:hover {
+
+        img {
+            animation: Xmove 0.7s ease-in-out forwards;
+        }
+    }
+
+    img {
+        width: 1.9rem;
+        height: 1.4rem;
+        margin-left: 1.17rem;
+    }
+
+    @media (width < 768px) {
+        font-size: 1.3rem;
+
+        img {
+            width: 1.2rem;
+            height: 0.8rem;
+        }
+    }
+}
+
+.btn-facebook {
+    &::after {
+        content: "";
+        width: 1.2rem;
+        aspect-ratio: 1;
+        @include background('ico_facebook.svg', center, null, size, contain);
+        background-size: cover;
+    }
+}
+
+.btn-instagram {
+    &::after {
+        content: "";
+        width: 1.2rem;
+        aspect-ratio: 1;
+        @include background('ico_instagram.svg', center, null, size, contain);
+        background-size: cover;
+    }
+}
+
+.btn-twitter {
+    &::after {
+        content: "";
+        width: 1.2rem;
+        aspect-ratio: 1;
+        @include background('ico_twitter.svg', center, null, size, contain);
+        background-size: cover;
+    }
+}
